@@ -96,11 +96,11 @@ const Register = () => {
     <input type="text" className="form-control" placeholder="Enter first name" name="prenom" value={user.prenom} onChange={userInput} required />
   </div>
   <div className="form-group">
-    <label for="pwd">Student Card:</label>
+    <label for="pwd">Student Card</label>
     <input type="text" className="form-control" placeholder="Enter student card" name="carte_etu" value={user.carte_etu} onChange={userInput} required />
   </div>
   <div className="form-group">
-    <label for="pwd">Class:</label>
+    <label for="pwd">Class</label>
     <input type="text" className="form-control" placeholder="Enter your class" name="classe" value={user.classe} onChange={userInput} required />
   </div>
   <button type="submit" className="btn btn-primary">Submit</button>

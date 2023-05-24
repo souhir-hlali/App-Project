@@ -7,7 +7,12 @@ const cookieparser=require("cookie-parser")
 const session=require("express-session");
 const saltRounds = 10;
 
+const multer = require('multer');
+
+const upload = multer({ dest: 'uploads/' });
+
 const PORT=process.env.PORT || 3001;
+
 
 const app=express();
 
@@ -253,6 +258,26 @@ app.get("/login",(req,res)=>{
     }
 })
 
+
+app.post('/upload', upload.single('image'), (req, res) => {
+    
+    const imageFile = req.file;
+  
+   
+    const { originalname, filename, path } = imageFile;
+    const imageUrl = `http://yourdomain.com/uploads/${filename}`;
+  
+    const insertQuery = 'INSERT INTO images (original_name, file_name, url) VALUES (?, ?, ?)';
+    db.query(insertQuery, [originalname, filename, imageUrl], (err, result) => {
+      if (err) {
+        console.error('Error saving image metadata to database:', err);
+        res.status(500).send('Error saving image metadata to database');
+      } else {
+        console.log('Image metadata saved to database');
+        res.status(200).send('Image uploaded successfully');
+      }
+    });
+  });
 
 
 app.listen(PORT,()=>{

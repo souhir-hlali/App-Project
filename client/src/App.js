@@ -7,7 +7,7 @@ import Register from './component/Register';
 import Profile from './component/Profile';
 import LoginAdmin from './component/admin';
 import './App.css';
-import User from './component/User';
+import FileUpload from './component/FileUpload';
 
 const App = () => {
   return (
@@ -19,7 +19,7 @@ const App = () => {
       <Route exact path ="/register" component={Register}/>
       <Route exact path ="/profile" component={Profile}/>
       <Route exact path ="/registerAdmin" />
-      <Route exact path ="/User" component={User} />
+      <Route exact path ="/FileUpload" component={FileUpload} />
       <Route exact path ="/admin" component={LoginAdmin}/>
 
      
